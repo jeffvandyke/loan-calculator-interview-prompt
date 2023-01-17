@@ -7,9 +7,16 @@ import { FieldTitle, InputField, ReadOnlyField } from "form-library";
  *
  * You have an interactive <LoanComparisonPage /> component that manages
  * its own state internally, and side-by-side, you have a list of various
- * loans options from different loan providers. How would you implement a
- * new button on each loan option that fills in the calculator with the
- * amount, interest rate, and term fields from the loan whose button is
+ * loans options from different loan providers. The calculator is a standard
+ * loan payment calculator, allowing a user to see what their monthly payment
+ * would be.
+ *
+ * Currently, the calc button does nothing, and the calculator inputs need to
+ * be filled in manually to allow the user to plan different scenarios based on
+ * which loan they choose.
+ *
+ * How would you implement a new button on each loan option that fills in the
+ * calculator with the amount and interest rate from the loan whose button is
  * clicked on?
  */
 
@@ -73,6 +80,7 @@ const LoanCalculator = () => {
     interestRate: 3,
     // ... other fields,
     extraPayment: 0,
+    extraMonthlyPayment: 0,
   });
 
   const handleChange = React.useCallback((event) => {
@@ -99,6 +107,9 @@ const LoanCalculator = () => {
         />
 
         {/* ... other inputs ... */}
+
+        <FieldTitle>Loan Duration (Term)</FieldTitle>
+        <ReadonlyField value={formatDuration(calcResult.duration)} />
 
         <FieldTitle>Monthly Payment</FieldTitle>
         <ReadonlyField value={formatDollars(calcResult.monthlyPayment)} />
