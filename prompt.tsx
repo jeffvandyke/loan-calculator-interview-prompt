@@ -2,6 +2,17 @@ import * as React from "react";
 import LoanRow from "./LoanRow";
 import { FieldTitle, InputField, ReadOnlyField } from "form-library";
 
+
+/* Exercise:
+ *
+ * You have an interactive <LoanComparisonPage /> component that manages
+ * its own state internally, and side-by-side, you have a list of various
+ * loans options from different loan providers. How would you implement a
+ * new button on each loan option that fills in the calculator with the
+ * amount, interest rate, and term fields from the loan whose button is
+ * clicked on?
+ */
+
 function useLoans() {
   const loans = [
     {
