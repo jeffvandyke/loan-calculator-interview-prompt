@@ -83,9 +83,9 @@ const LoanCalculator = () => {
     extraMonthlyPayment: 0,
   });
 
-  const handleChange = React.useCallback((event) => {
-    setCalcInputs((s) => ({ ...s, [event.target.name]: event.target.value }));
-  });
+  const handleChange = React.useCallback(({ currentTarget: { name, value } }) => {
+    setCalcInputs((s) => ({ ...s, [name]: value }));
+  }, []);
 
   const calcResult = calculateTotalPayment(calcInputs);
 
