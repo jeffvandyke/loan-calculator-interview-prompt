@@ -45,13 +45,21 @@ export default function LoanComparisonPage() {
   );
 }
 
+function LoanRow({ loan }) {
+  return <div>
+    {loan.title}
+    {/* ... other loan details ... */}
+    <button /* TODO: onClick={} */>Calc</button>
+  </div>
+}
+
 function LoanList({ loans }) {
   return (
-    <div className="panel">
+    <div>
       {loans.map((loan) => (
         <LoanRow
-          loan={loan}
           key={`${loan.title}-${loan.term}-${loan.amount}`}
+          loan={loan}
         />
       ))}
     </div>
@@ -74,8 +82,8 @@ const LoanCalculator = () => {
   const calcResult = calculateTotalPayment(calcInputs);
 
   return (
-    <div className="panel">
-      <div className="calculatorForm">
+    <div>
+      <div>
         <FieldTitle>Loan Amount</FieldTitle>
         <InputField
           name="amount"
