@@ -52,6 +52,8 @@ export default function LoanComparisonPage() {
   );
 }
 
+// ---- Loan List panel --------------------------------------------------------
+
 function LoanRow({ loan }) {
   return <div>
     {loan.title}
@@ -72,6 +74,8 @@ function LoanList({ loans }) {
     </div>
   );
 }
+
+// ---- Loan Calculator --------------------------------------------------------
 
 const LoanCalculator = () => {
   //More is needed here
