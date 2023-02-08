@@ -20,8 +20,16 @@ import { FieldTitle, InputField, ReadOnlyField } from "form-library";
  * clicked on?
  */
 
+type ApiLoan = {
+  title: string;
+  amount: number;
+  interestPct: number;
+  termMonths: number;
+  monthlyPayment: number;
+}
+
 function useLoans() {
-  const loans = [
+  const loans: ApiLoan[] = [
     {
       title: "PNC Bank",
       amount: 3000,
@@ -54,15 +62,16 @@ export default function LoanComparisonPage() {
 
 // ---- Loan List panel --------------------------------------------------------
 
-function LoanRow({ loan }) {
+function LoanRow({ loan }: { loan: ApiLoan }) {
   return <div>
     {loan.title}
+    {loan.amount}
     {/* ... other loan details ... */}
     <button /* TODO: onClick={} */>Calc</button>
   </div>
 }
 
-function LoanList({ loans }) {
+function LoanList({ loans }: { loans: ApiLoan[] }) {
   return (
     <div>
       {loans.map((loan) => (
@@ -83,7 +92,7 @@ const LoanCalculator = () => {
     amount: 1000,
     interestRate: 3,
     // ... other fields,
-    extraPayment: 0,
+    extraInitialPayment: 0,
     extraMonthlyPayment: 0,
   });
 
